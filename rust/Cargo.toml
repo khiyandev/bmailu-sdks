@@ -1,0 +1,22 @@
+[package]
+name = "bmailu"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.71"
+description = "Rust SDK for the Bmailu Email API"
+license = "MIT"
+homepage = "https://bmailu.com/docs/"
+documentation = "https://bmailu.com/docs/"
+readme = "README.md"
+keywords = ["email", "bmailu", "api", "smtp"]
+categories = ["email", "api-bindings"]
+
+[dependencies]
+# Blocking HTTP with rustls for https; no gzip or other extras.
+ureq = { version = "2.10", default-features = false, features = ["tls"] }
+serde = "1"
+serde_json = "1"
+# Webhook signature checks.
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"

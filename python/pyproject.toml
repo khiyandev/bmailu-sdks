@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bmailu"
+version = "0.1.0"
+description = "Official Python SDK for the Bmailu Email API"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.8"
+dependencies = []
+keywords = ["email", "bmailu", "smtp", "transactional", "api"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://bmailu.com/"
+Source = "https://github.com/khiyandev/bmailu-sdks"
+Documentation = "https://bmailu.com/docs/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bmailu"]

@@ -1,0 +1,51 @@
+{
+  "name": "bmailu",
+  "version": "0.1.0",
+  "description": "Official Node.js SDK and CLI for the Bmailu Email API",
+  "license": "MIT",
+  "author": "Bmailu",
+  "homepage": "https://bmailu.com/docs/",
+  "keywords": [
+    "bmailu",
+    "email",
+    "email-api",
+    "transactional-email",
+    "smtp",
+    "webhooks",
+    "cli"
+  ],
+  "main": "lib/index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/index.js",
+      "import": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "bmailu": "bin/bmailu.js"
+  },
+  "files": [
+    "lib/index.js",
+    "bin/bmailu.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "./test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khiyandev/bmailu-sdks.git",
+    "directory": "node"
+  },
+  "bugs": {
+    "url": "https://github.com/khiyandev/bmailu-sdks/issues"
+  }
+}

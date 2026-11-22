@@ -1,0 +1,20 @@
+{
+    "name": "bmailu/bmailu",
+    "description": "Official PHP SDK for the Bmailu Email API",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.1.0",
+    "keywords": ["email", "bmailu", "api", "transactional"],
+    "homepage": "https://bmailu.com/",
+    "support": {"docs": "https://bmailu.com/docs/"},
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*"
+    },
+    "suggest": {
+        "ext-curl": "Faster HTTP; PHP streams are used when curl is not loaded"
+    },
+    "autoload": {
+        "psr-4": {"Bmailu\\": "src/"}
+    }
+}

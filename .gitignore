@@ -1,0 +1,14 @@
+BRIEF.md
+test-server.js
+.tool-versions
+node_modules/
+*.gem
+*.whl
+dist-py/
+__pycache__/
+target/
+bin/Debug/
+obj/
+_build/
+deps/
+*.zip
