@@ -85,6 +85,7 @@ class Bmailu_Mailer {
 		if ( ! empty( $settings['fallback'] ) ) {
 			return null; // Let WordPress send it with its normal mailer.
 		}
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- core WordPress hook.
 		do_action( 'wp_mail_failed', $result );
 		return false;
 	}
@@ -212,9 +213,11 @@ class Bmailu_Mailer {
 		if ( '' === $from_name ) {
 			$from_name = 'WordPress';
 		}
+		// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- core WordPress mail filters.
 		$from_email   = (string) apply_filters( 'wp_mail_from', $from_email );
 		$from_name    = (string) apply_filters( 'wp_mail_from_name', $from_name );
 		$content_type = (string) apply_filters( 'wp_mail_content_type', $content_type );
+		// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 		$to = is_array( $atts['to'] ) ? $atts['to'] : self::split_list( (string) $atts['to'] );
 		$to = array_values( array_filter( array_map( 'trim', array_map( 'strval', $to ) ) ) );

@@ -1,8 +1,8 @@
 === Bmailu ===
-Contributors: bmailu
+Contributors: khiyandev
 Tags: email, smtp, wp_mail, transactional email, email api
 Requires at least: 5.7
-Tested up to: 6.9
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 0.1.0
 License: GPLv2 or later
