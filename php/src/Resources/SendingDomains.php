@@ -41,4 +41,16 @@ final class SendingDomains extends Resource
     {
         return $this->client->request('POST', "/sending-domains/{$this->seg($sendingDomainId)}/check", null);
     }
+
+    /** Change settings, e.g. ['tls' => 'enforced']. PATCH /sending-domains/{sending_domain_id} */
+    public function update(string|int $sendingDomainId, array $params): mixed
+    {
+        return $this->client->request('PATCH', "/sending-domains/{$this->seg($sendingDomainId)}", $this->obj($params));
+    }
+
+    /** Deliverability insights. GET /sending-domains/{sending_domain_id}/insights */
+    public function insights(string|int $sendingDomainId): mixed
+    {
+        return $this->client->request('GET', "/sending-domains/{$this->seg($sendingDomainId)}/insights", null);
+    }
 }

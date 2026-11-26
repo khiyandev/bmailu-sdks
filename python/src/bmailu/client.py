@@ -224,6 +224,14 @@ class SendingDomains(_Resource):
     def check(self, sending_domain_id: Union[int, str]) -> JSON:
         return self._r("POST", f"/sending-domains/{_seg(sending_domain_id)}/check")
 
+    def update(self, sending_domain_id: Union[int, str], params: Mapping[str, Any]) -> JSON:
+        """Change settings, e.g. {"tls": "enforced"}."""
+        return self._r("PATCH", f"/sending-domains/{_seg(sending_domain_id)}", params)
+
+    def insights(self, sending_domain_id: Union[int, str]) -> JSON:
+        """Deliverability insights: DNS, DMARC, alignment, 7-day bounce and complaint rates."""
+        return self._r("GET", f"/sending-domains/{_seg(sending_domain_id)}/insights")
+
 
 def _idem(key: Optional[str]) -> Optional[Dict[str, str]]:
     return {"Idempotency-Key": key} if key else None

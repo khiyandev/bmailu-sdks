@@ -143,6 +143,16 @@ module Bmailu
       def check(sending_domain_id)
         @client.request("POST", "/sending-domains/#{seg(sending_domain_id)}/check")
       end
+
+      # Change settings, e.g. { tls: "enforced" }. PATCH /sending-domains/{sending_domain_id}
+      def update(sending_domain_id, params)
+        @client.request("PATCH", "/sending-domains/#{seg(sending_domain_id)}", body: params)
+      end
+
+      # Deliverability insights. GET /sending-domains/{sending_domain_id}/insights
+      def insights(sending_domain_id)
+        @client.request("GET", "/sending-domains/#{seg(sending_domain_id)}/insights")
+      end
     end
 
     class Emails < Resource

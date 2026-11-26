@@ -126,6 +126,7 @@ class CoverageTest(unittest.TestCase):
             lambda: b.api_keys.list(), lambda: b.api_keys.create(P), lambda: b.api_keys.revoke(X),
             lambda: b.sending_domains.list(), lambda: b.sending_domains.create(P), lambda: b.sending_domains.get(X),
             lambda: b.sending_domains.delete(X), lambda: b.sending_domains.verify(X), lambda: b.sending_domains.check(X),
+            lambda: b.sending_domains.update(X, P), lambda: b.sending_domains.insights(X),
             lambda: b.emails.send(P), lambda: b.emails.list(), lambda: b.emails.batch([]), lambda: b.emails.export(),
             lambda: b.emails.get(X), lambda: b.emails.update(X, P), lambda: b.emails.cancel(X),
             lambda: b.webhooks.list(), lambda: b.webhooks.create(P), lambda: b.webhooks.get(X), lambda: b.webhooks.update(X, P),
