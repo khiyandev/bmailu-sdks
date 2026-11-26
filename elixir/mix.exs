@@ -12,7 +12,7 @@ defmodule Bmailu.MixProject do
       description: "Elixir SDK for the Bmailu Email API",
       package: [
         licenses: ["MIT"],
-        links: %{"Docs" => "https://bmailu.com/docs/"}
+        links: %{"Docs" => "https://bmailu.com/docs/", "GitHub" => "https://github.com/khiyandev/bmailu-sdks"}
       ],
       docs: [main: "readme", extras: ["README.md"]],
       deps: []

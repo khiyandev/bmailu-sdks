@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.7"
   s.files = Dir["lib/**/*.rb"] + %w[README.md LICENSE bmailu.gemspec]
   s.require_paths = ["lib"]
-  s.metadata = { "documentation_uri" => "https://bmailu.com/docs/", "homepage_uri" => "https://bmailu.com/" }
+  s.metadata = { "documentation_uri" => "https://bmailu.com/docs/", "homepage_uri" => "https://bmailu.com/",
+                 "source_code_uri" => "https://github.com/khiyandev/bmailu-sdks/tree/main/ruby", "bug_tracker_uri" => "https://github.com/khiyandev/bmailu-sdks/issues",
+                 "rubygems_mfa_required" => "true" }
 end

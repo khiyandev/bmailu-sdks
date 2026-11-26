@@ -12,6 +12,9 @@
     <Description>.NET SDK for the Bmailu Email API.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://bmailu.com/docs/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/khiyandev/bmailu-sdks</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>email;bmailu;smtp;transactional;api</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>

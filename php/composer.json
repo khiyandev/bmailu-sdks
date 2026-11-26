@@ -3,7 +3,6 @@
     "description": "Official PHP SDK for the Bmailu Email API",
     "type": "library",
     "license": "MIT",
-    "version": "0.1.0",
     "keywords": ["email", "bmailu", "api", "transactional"],
     "homepage": "https://bmailu.com/",
     "support": {"docs": "https://bmailu.com/docs/"},
