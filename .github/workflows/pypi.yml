@@ -1,0 +1,21 @@
+# Publishes the Python SDK to PyPI with Trusted Publishing (no token). Runs when a tag python/vX.Y.Z is pushed.
+name: Publish Python SDK
+on:
+  push:
+    tags: ['python/v*']
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          test "python/v$(grep -m1 '^version' python/pyproject.toml | cut -d'"' -f2)" = "$GITHUB_REF_NAME"
+          python -m pip install build
+          python -m build python --outdir dist
+      - uses: pypa/gh-action-pypi-publish@release/v1
