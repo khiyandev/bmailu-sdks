@@ -1,0 +1,24 @@
+# Publishes the .NET SDK to NuGet with Trusted Publishing (no stored key). Runs when a tag dotnet/vX.Y.Z is pushed.
+name: Publish .NET SDK
+on:
+  push:
+    tags: ['dotnet/v*']
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: |
+          test "dotnet/v$(grep -o '<Version>[^<]*' dotnet/src/Bmailu/Bmailu.csproj | cut -d'>' -f2)" = "$GITHUB_REF_NAME"
+          dotnet pack dotnet/src/Bmailu/Bmailu.csproj -c Release -o out
+      - uses: NuGet/login@v1
+        id: login
+        with:
+          user: khiyandev
+      - run: dotnet nuget push out/*.nupkg --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json

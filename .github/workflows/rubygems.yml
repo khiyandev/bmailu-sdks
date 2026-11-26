@@ -1,0 +1,27 @@
+# Publishes the Ruby SDK to RubyGems with Trusted Publishing (no token). Runs when a tag ruby/vX.Y.Z is pushed.
+# vars.RUBYGEMS_OWNER_ID is only needed for the very first release (pending trusted publisher).
+name: Publish Ruby SDK
+on:
+  push:
+    tags: ['ruby/v*']
+jobs:
+  rubygems:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    defaults:
+      run:
+        working-directory: ruby
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - uses: rubygems/configure-rubygems-credentials@main
+        with:
+          owner: ${{ vars.RUBYGEMS_OWNER_ID }}
+      - run: |
+          test "ruby/v$(ruby -r ./lib/bmailu/version -e 'print Bmailu::VERSION')" = "$GITHUB_REF_NAME"
+          gem build bmailu.gemspec
+          gem push bmailu-*.gem
