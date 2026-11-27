@@ -1,0 +1,25 @@
+# Publishes the Elixir SDK to Hex. Runs when a tag elixir/vX.Y.Z is pushed. Needs the HEX_API_KEY secret (Hex has no tokenless publishing).
+name: Publish Elixir SDK
+on:
+  push:
+    tags: ['elixir/v*']
+jobs:
+  hex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: elixir
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '27'
+          elixir-version: '1.18'
+      - run: |
+          test "elixir/v$(grep -m1 '@version "' mix.exs | cut -d'"' -f2)" = "$GITHUB_REF_NAME"
+          mix local.hex --force
+          mix hex.publish package --yes
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}

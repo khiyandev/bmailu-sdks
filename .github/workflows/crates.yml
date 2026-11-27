@@ -1,0 +1,21 @@
+# Publishes the Rust SDK to crates.io. Runs when a tag rust/vX.Y.Z is pushed.
+# First release uses the CARGO_REGISTRY_TOKEN secret; after it, switch to crates.io Trusted Publishing and delete the secret.
+name: Publish Rust SDK
+on:
+  push:
+    tags: ['rust/v*']
+jobs:
+  crates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: test "rust/v$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)" = "$GITHUB_REF_NAME"
+      - run: cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
